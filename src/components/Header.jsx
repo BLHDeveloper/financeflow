@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <>
       {/* Version Desktop */}
-      <header className="hidden md:block px-[133px] py-[33px]">
+      <header className="hidden md:block px-[133px] py-[33px] relative">
         <div className="flex justify-between items-center px-6">
           <div className="flex items-center gap-8">
             <Logo />
@@ -50,7 +50,6 @@ const Header = () => {
           </div>
         </div>
       </header>
-
       {/* Version Mobile */}
       <header className="block md:hidden p-[24px]">
         <div className="flex justify-between items-center">

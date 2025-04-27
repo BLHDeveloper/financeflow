@@ -1,8 +1,8 @@
-
+import Section1 from "@/components/Section1";
 export default function Home() {
   return (
-    <div className="">
-<h1>jdiwef</h1>
-    </div>
+    <>
+   <Section1 /> 
+    </>
   );
 }

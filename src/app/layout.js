@@ -22,6 +22,20 @@ export default function RootLayout({ children }) {
         data-new-gr-c-s-check-loaded="8.929.0"
         data-gr-ext-installed=""
       >
+        <div className="absolute top-0 left-0 opacity-40 shrink-0 blur-[48.259159088134766px] fill-[var(--dark-blue,#010D50)]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="590"
+            height="608"
+            viewBox="0 0 590 608"
+            fill="none"
+          >
+            <path
+              d="M114 607.586C376.659 607.586 589.586 394.659 589.586 132C589.586 -130.659 376.659 -343.586 114 -343.586C-148.659 -343.586 -361.586 -130.659 -361.586 132C-361.586 394.659 -148.659 607.586 114 607.586Z"
+              fill="#010D50"
+            />
+          </svg>
+        </div>
         <Header />
         {children}
         <Footer />
