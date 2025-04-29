@@ -41,7 +41,7 @@ const Section1 = () => {
         </div>
 
         <div className="flex max-sm:flex-col pt-[86px] pb-[170px] max-sm:pb-[80px] max-sm:pt-[48px]">
-          <div className="flex  flex-col sm:items-start justify-start gap-[9px] max-sm:gap-[16px] max-sm:pt-[0px] pt-[120px] max-sm:pl-[16px] pl-[157px] pr-0">
+          <div className="flex  flex-col sm:items-start justify-start gap-[9px] max-sm:gap-[16px] max-sm:pt-[0px] pt-[120px] max-sm:px-[16px] pl-[157px] pr-0">
             <h1 className="text-white font-['DM_Sans'] text-[66px] max-sm:text-[36px] font-bold leading-[79.992px] max-sm:leading-[46px] tracking-[-1px] w-[738px] max-sm:w-[300px] relative">
               Buy, trade, and hold 350+ cryptocurrencies
             </h1>
@@ -49,7 +49,7 @@ const Section1 = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat
               nulla suspendisse tortor aenean dis placerat.
             </p>
-            <div className="flex max-sm:flex-col sm:items-start gap-[28px] max-sm:gap-[16px] pt-[33px] max-sm:pt-[24px]  max-sm:px-[16px] relative">
+            <div className="flex max-sm:flex-col sm:items-start gap-[28px] max-sm:gap-[16px] pt-[33px] max-sm:pt-[24px] relative">
               <Button label="Download App" />
               <Button2 label="view pricing" />
             </div>

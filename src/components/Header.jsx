@@ -51,7 +51,7 @@ const Header = () => {
         </div>
       </header>
       {/* Version Mobile */}
-      <header className="block md:hidden p-[24px]">
+      <header className="block md:hidden p-[24px] relative">
         <div className="flex justify-between items-center">
           <LogoMobile />
           <div className="flex w-[45px] h-[45px] px-[10px] py-[13px] justify-center items-center shrink-0 rounded-full bg-[#0328EE]">
