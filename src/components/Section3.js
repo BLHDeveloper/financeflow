@@ -235,7 +235,7 @@ const sections = [
         ),
         label: "256-bit secure encryption",
         className: "p-[7px]",
-        size: "w-[32px] h-[32px]",
+        
       },
     ],
   },
