@@ -77,6 +77,7 @@ const Section2 = () => {
           </defs>
         </svg>
       ),
+      className: "pt-[14px] pr-[13px] pb-[13px] pl-[13px]",
     },
     {
       title: "100% Secure Wallet",
@@ -114,6 +115,7 @@ const Section2 = () => {
           </defs>
         </svg>
       ),
+      className: "pt-[14px] pr-[13px] pb-[15px] pl-[12px]",
     },
     {
       title: "Trading Charts",
@@ -153,6 +155,7 @@ const Section2 = () => {
           </defs>
         </svg>
       ),
+      className: "p-[13px]",
     },
     {
       title: "Real Time Trading",
@@ -194,6 +197,7 @@ const Section2 = () => {
           </g>
         </svg>
       ),
+      className: "pt-[10px] pr-[5px] pb-[11px] pl-[5px]",
     },
   ];
 
@@ -230,7 +234,9 @@ const Section2 = () => {
               key={index}
               className="w-[325px] max-sm:w-[358px] h-[295px] flex-shrink-0 rounded-[40px] bg-[#010D50] pl-[23px] pt-[48px]"
             >
-              <div className="inline-flex p-[14px] justify-center items-center rounded-[20px] bg-[#0328EE]">
+              <div
+                className={`inline-flex ${feature.className} justify-center items-center rounded-[20px] bg-[#0328EE]`}
+              >
                 <div className="flex items-start opacity-[0.8499]">
                   {feature.icon}
                 </div>
@@ -266,7 +272,9 @@ const Section2 = () => {
               key={index}
               className="w-[325px] max-sm:w-[358px] h-[295px] flex-shrink-0 rounded-[40px] bg-[#010D50] pl-[23px] pt-[48px]"
             >
-              <div className="inline-flex p-[14px] justify-center items-center rounded-[20px] bg-[#0328EE]">
+              <div
+                className={`inline-flex ${feature.className} justify-center items-center rounded-[20px] bg-[#0328EE]`}
+              >
                 <div className="flex items-start opacity-[0.8499]">
                   {feature.icon}
                 </div>
