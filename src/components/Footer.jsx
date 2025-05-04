@@ -1,205 +1,140 @@
-import React from "react";
+import React, { memo } from "react";
 import Logo from "./Logo";
+import Button from "./Button";
+import { SOCIAL_ICONS, MENU_LINKS, DOWNLOAD_OPTIONS } from "../data/footerData";
 
-const Footer = () => {
-  const socialIcons = [
-    {
-      id: 1,
-      svgPath: (
-        <path
-          d="M18.0223 12.8438C15.1652 12.8438 12.8884 15.1652 12.8884 17.9777C12.8884 20.8348 15.1652 23.1116 18.0223 23.1116C20.8348 23.1116 23.1562 20.8348 23.1562 17.9777C23.1562 15.1652 20.8348 12.8438 18.0223 12.8438ZM18.0223 21.3259C16.192 21.3259 14.6741 19.8527 14.6741 17.9777C14.6741 16.1473 16.1473 14.6741 18.0223 14.6741C19.8527 14.6741 21.3259 16.1473 21.3259 17.9777C21.3259 19.8527 19.8527 21.3259 18.0223 21.3259ZM24.5402 12.6652C24.5402 11.9955 24.0045 11.4598 23.3348 11.4598C22.6652 11.4598 22.1295 11.9955 22.1295 12.6652C22.1295 13.3348 22.6652 13.8705 23.3348 13.8705C24.0045 13.8705 24.5402 13.3348 24.5402 12.6652ZM27.933 13.8705C27.8438 12.2634 27.4866 10.8348 26.3259 9.67411C25.1652 8.51339 23.7366 8.15625 22.1295 8.06696C20.4777 7.97768 15.5223 7.97768 13.8705 8.06696C12.2634 8.15625 10.8795 8.51339 9.67411 9.67411C8.51339 10.8348 8.15625 12.2634 8.06696 13.8705C7.97768 15.5223 7.97768 20.4777 8.06696 22.1295C8.15625 23.7366 8.51339 25.1205 9.67411 26.3259C10.8795 27.4866 12.2634 27.8438 13.8705 27.933C15.5223 28.0223 20.4777 28.0223 22.1295 27.933C23.7366 27.8438 25.1652 27.4866 26.3259 26.3259C27.4866 25.1205 27.8438 23.7366 27.933 22.1295C28.0223 20.4777 28.0223 15.5223 27.933 13.8705ZM25.7902 23.8705C25.4777 24.7634 24.7634 25.433 23.9152 25.7902C22.5759 26.3259 19.4509 26.192 18.0223 26.192C16.5491 26.192 13.4241 26.3259 12.1295 25.7902C11.2366 25.433 10.567 24.7634 10.2098 23.8705C9.67411 22.5759 9.80804 19.4509 9.80804 17.9777C9.80804 16.5491 9.67411 13.4241 10.2098 12.0848C10.567 11.2366 11.2366 10.567 12.1295 10.2098C13.4241 9.67411 16.5491 9.80804 18.0223 9.80804C19.4509 9.80804 22.5759 9.67411 23.9152 10.2098C24.7634 10.5223 25.433 11.2366 25.7902 12.0848C26.3259 13.4241 26.192 16.5491 26.192 17.9777C26.192 19.4509 26.3259 22.5759 25.7902 23.8705Z"
-          fill="white"
-        />
-      ),
-    },
-    {
-      id: 2,
-      svgPath: (
-        <path
-          d="M25.8571 8H10.1429C8.9375 8 8 8.98214 8 10.1429V25.8571C8 27.0625 8.9375 28 10.1429 28H16.2589V21.2143H13.4464V18H16.2589V15.5893C16.2589 12.8214 17.9107 11.2589 20.4107 11.2589C21.6607 11.2589 22.9107 11.4821 22.9107 11.4821V14.2054H21.5268C20.1429 14.2054 19.6964 15.0536 19.6964 15.9464V18H22.7768L22.2857 21.2143H19.6964V28H25.8571C27.0179 28 28 27.0625 28 25.8571V10.1429C28 8.98214 27.0179 8 25.8571 8Z"
-          fill="white"
-        />
-      ),
-    },
-    {
-      id: 3,
-      svgPath: (
-        <path
-          d="M12.4743 28V14.6219H8.3132V28H12.4743ZM10.3714 12.8322C11.7136 12.8322 12.7875 11.7136 12.7875 10.3714C12.7875 9.07383 11.7136 8 10.3714 8C9.07383 8 8 9.07383 8 10.3714C8 11.7136 9.07383 12.8322 10.3714 12.8322ZM28.0447 28V20.6622C28.0447 17.0828 27.2394 14.3087 23.0336 14.3087C21.0201 14.3087 19.6779 15.4273 19.0962 16.4564H19.0515V14.6219H15.0694V28H19.2304V21.3781C19.2304 19.6331 19.5436 17.9776 21.6913 17.9776C23.8389 17.9776 23.8837 19.9463 23.8837 21.5123V28H28.0447Z"
-          fill="white"
-        />
-      ),
-    },
-  ];
+// Composant pour les icônes sociales réutilisables - optimisé avec memo
+const SocialIcon = memo(({ icon }) => (
+  <a
+    href={`https://${icon.id}.com/financeflow`}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={icon.ariaLabel}
+    className="hover:opacity-80 transition-opacity"
+  >
+    <div className="w-[36px] h-[36px] rounded-full bg-white/50 hover:bg-white/60 flex items-center justify-center transition-colors">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
+        fill="none"
+        aria-hidden="true"
+      >
+        {icon.svgPath}
+      </svg>
+    </div>
+  </a>
+));
 
-  const menuLinks = [
-    [
-      { link: "Home", href: "/Home" },
-      { link: "About", href: "/About" },
-      { link: "Pricing", href: "/Pricing" },
-    ],
-    [
-      { link: "Tokens", href: "/Tokens" },
-      { link: "Blog", href: "/Blog" },
-      { link: "Contact Us", href: "/Contact Us" },
-    ],
-  ];
+SocialIcon.displayName = 'SocialIcon';
 
-  const downloadButtons = [
-    {
-      id: 1,
-      label: "App Store",
-      svgPath: (
-        <>
-          <g clipPath="url(#clip0_13_280)">
-            <path
-              d="M2.89196 24.0589C3.90895 25.5229 5.29949 27.5247 7.09357 27.5247V27.5212H7.18498C7.86984 27.4777 8.53946 27.2985 9.15543 26.9938H9.17267C9.95229 26.6126 10.8069 26.4128 11.6735 26.4091C12.5034 26.4182 13.3208 26.6135 14.0664 26.9808H14.0716C14.6946 27.297 15.38 27.4686 16.0774 27.483H16.1792C17.9841 27.456 19.1378 25.9391 20.3451 24.1093C21.1739 22.9142 21.8163 21.5984 22.25 20.2076V20.2006C21.5704 19.9123 20.9494 19.5 20.4184 18.9843C19.832 18.4268 19.3666 17.7531 19.0513 17.0055C18.7361 16.2579 18.578 15.4525 18.5868 14.6403C18.6038 13.5861 18.8836 12.5531 19.4003 11.6361C19.9169 10.7192 20.654 9.94782 21.5438 9.39272C20.9766 8.57776 20.2289 7.90699 19.3599 7.43351C18.4909 6.96002 17.5245 6.6968 16.537 6.66468C16.3724 6.64991 16.2249 6.64209 16.0989 6.64209C15.0096 6.71105 13.9425 6.98387 12.9523 7.4466H12.9316C12.4223 7.69534 11.8757 7.8574 11.3139 7.92618C10.7214 7.86295 10.1448 7.6944 9.61074 7.42836H9.59177C8.73578 7.01905 7.80992 6.7787 6.86419 6.72029H6.78658C5.63538 6.75676 4.51323 7.0933 3.52964 7.69705C2.54603 8.3008 1.73459 9.15114 1.17449 10.1651C0.0454163 12.4 -0.282374 14.9595 0.246607 17.41C0.663483 19.7825 1.5618 22.0428 2.88536 24.0494L2.89196 24.0589Z"
-              fill="white"
-            />
-            <path
-              d="M11.1 6.344C11.1889 6.35197 11.2781 6.35546 11.3674 6.35443C12.0995 6.31719 12.8157 6.12494 13.4691 5.79023C14.1225 5.4555 14.6987 4.98583 15.1599 4.41178C16.1822 3.18276 16.6844 1.59846 16.5586 0C15.0035 0.163702 13.5668 0.911959 12.535 2.09555C11.5165 3.26402 11.0004 4.79218 11.1 6.344Z"
-              fill="white"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_13_280">
-              <rect width="23" height="28" fill="white" />
-            </clipPath>
-          </defs>
-        </>
-      ),
-    },
-    {
-      id: 2,
-      label: "Play Store",
-      svgPath: (
-        <>
-          <g clipPath="url(#clip0_13_272)">
-            <path
-              d="M16.5186 16.5951L13.066 13.136L1.64111 24.7387C1.75032 24.6974 1.85619 24.6478 1.95776 24.5902L16.5186 16.5951Z"
-              fill="white"
-            />
-            <path
-              d="M0.00850522 1.94011C0.0144238 3.35543 0.107148 22.2237 0.116026 23.4134C0.0902982 23.6611 0.125802 23.9113 0.219399 24.142C0.312996 24.3725 0.4618 24.5765 0.652648 24.7357L12.5668 12.6372L0.600367 0.643555C0.393848 0.785546 0.229684 0.981195 0.125431 1.20957C0.0211803 1.43795 -0.0192362 1.69047 0.00850522 1.94011Z"
-              fill="white"
-            />
-            <path
-              d="M17.1585 8.98145L13.561 12.6345L17.1625 16.2421L22.1124 13.5234C22.7043 13.1957 23.3336 12.3604 22.1124 11.6923L17.1585 8.98145Z"
-              fill="white"
-            />
-            <path
-              d="M1.95772 0.659347C1.7996 0.5753 1.62738 0.521278 1.44971 0.5L13.0631 12.1343L16.5156 8.62869L1.95772 0.659347Z"
-              fill="white"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_13_272">
-              <rect
-                width="23"
-                height="25"
-                fill="white"
-                transform="translate(0 0.5)"
-              />
-            </clipPath>
-          </defs>
-        </>
-      ),
-    },
-  ];
+// Composant pour les liens de navigation du footer - optimisé avec memo
+const FooterNavLinks = memo(({ section }) => (
+  <div className="flex flex-col items-start gap-[18px]">
+    {section.links.map((link) => (
+      <a
+        key={link.label}
+        href={link.href}
+        className="text-white text-[14px] font-medium leading-[16px] tracking-[1.4px] uppercase hover:text-blue-300 transition-colors"
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+));
+
+FooterNavLinks.displayName = 'FooterNavLinks';
+
+// Composant pour les boutons de téléchargement - optimisé avec memo
+const DownloadButton = memo(({ option }) => (
+  <Button
+    label={option.label}
+    leftIcon={option.svgPath}
+    className="h-[70px]"
+    href={`#download-${option.id}`}
+  />
+));
+
+DownloadButton.displayName = 'DownloadButton';
+
+// Composant principal du footer avec des props pour plus de flexibilité
+const Footer = ({ 
+  backgroundColor = "#010D50",
+  socialIcons = SOCIAL_ICONS,
+  menuLinks = MENU_LINKS,
+  downloadOptions = DOWNLOAD_OPTIONS,
+  copyrightText = "All rights reserved"
+}) => {
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="px-[133px] pt-[56px] pb-[32px] max-sm:px-[0px] max-sm:pt-[40px] max-sm:pb-[63px] bg-[#010D50]">
-      <div className="flex-col  px-6">
-        <div className="flex max-sm:flex-col max-sm:gap-6 justify-between items-center">
+    <footer className={`bg-[${backgroundColor}]`} aria-labelledby="footer-heading">
+      <h2 id="footer-heading" className="sr-only">
+        Footer
+      </h2>
+      <div className="px-[133px] pt-[56px] pb-[32px] max-sm:px-6 max-sm:pt-[40px] max-sm:pb-[63px]">
+        <div className="flex max-sm:flex-col max-sm:gap-6 justify-between items-center mb-[96px] max-sm:mb-[45px]">
           <Logo />
-          <div className="flex items-start gap-[12px]">
+          <div className="flex items-center gap-[12px]">
             {socialIcons.map((icon) => (
-              <button
-                key={icon.id}
-                className="w-[36px] h-[36px] fill-[rgba(255,255,255,0.50)] cursor-pointer"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="36"
-                  height="36"
-                  viewBox="0 0 36 36"
-                  fill="none"
-                >
-                  <rect
-                    width="36"
-                    height="36"
-                    rx="18"
-                    fill="white"
-                    fillOpacity="0.5"
-                  />
-                  {icon.svgPath}
-                </svg>
-              </button>
+              <SocialIcon key={icon.id} icon={icon} />
             ))}
           </div>
         </div>
-        <div className="flex max-sm:flex-col max-sm:gap-[56px] max-sm:pt-[45px]  justify-between sm:items-center pt-[96px] pb-[128px] max-sm:pb-[32px]  ">
+
+        <div className="flex max-sm:flex-col max-sm:gap-[56px] justify-between pb-[128px] max-sm:pb-[32px]">
+          {/* Navigation section */}
           <div className="flex-col">
-            <div className="flex pr-[224px] pb-[31px] items-center border-b border-white">
-              <div className="text-white font-['DM_Sans'] text-[18px] font-bold leading-[25.992px] tracking-[0.9px] uppercase">
+            <div className="flex pr-[224px] pb-[31px] items-center border-b border-white max-sm:pr-0">
+              <h3 className="text-white text-[18px] font-bold leading-[26px] tracking-[0.9px] uppercase">
                 Menu
-              </div>
+              </h3>
             </div>
-            <div className="flex justify-between items-start pt-[35px]">
-              {menuLinks.map((links, index) => (
-                <div
-                  key={index}
-                  className="flex px-[1px] flex-col items-start gap-[18px]"
-                >
-                  {links.map((link) => (
-                    <a
-                      href={link.href}
-                      key={`${link.link}-${link.href}`} // Combinaison de `link` et `href` pour une clé unique
-                      className="text-white font-['DM_Sans'] text-[14px] font-medium leading-[16.002px] tracking-[1.4px] uppercase"
-                    >
-                      {link.link}
-                    </a>
-                  ))}
-                </div>
+            <div className="flex justify-between items-start pt-[35px] gap-[56px] max-sm:gap-[32px]">
+              {menuLinks.map((section) => (
+                <FooterNavLinks key={section.id} section={section} />
               ))}
             </div>
           </div>
-          <div className="pr-[55px] pl-[34px] max-sm:px-[34px]  py-[44px] shrink-0 rounded-[40px] bg-[rgba(255,255,255,0.10)]">
-            <div className="text-white font-['DM_Sans'] text-[18px] font-bold leading-[25.992px] tracking-[0.9px] uppercase mb-[12px] max-sm:mb-[18px]">
+
+          {/* Download app section */}
+          <div className="px-[34px] py-[44px] max-sm:px-[34px] rounded-[40px] bg-white/10 max-w-[600px]">
+            <h3 className="text-white text-[18px] font-bold leading-[26px] tracking-[0.9px] uppercase mb-[12px] max-sm:mb-[18px]">
               Download our Application
-            </div>
-            <div className="text-white font-['DM_Sans'] text-[18px] font-normal leading-[32.004px] max-sm:self-stretch  sm:w-[420px] mb-[24px] max-sm:mb-[18px]">
+            </h3>
+            <p className="text-white text-[18px] font-normal leading-[32px] max-sm:self-stretch sm:max-w-[420px] mb-[24px] max-sm:mb-[18px]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
               sed nulla integer
-            </div>
-            <div className="sm:inline-flex sm:items-start gap-[16px] max-sm:flex max-sm:flex-col max-sm:self-stretch">
-              {downloadButtons.map((button) => (
-                <button
-                  key={button.id}
-                  className="flex h-[70px] px-[32px] py-[27px] justify-center items-center gap-[8px] rounded-[80px] bg-[#0328EE] hover:bg-[#031FB4] cursor-pointer"
-                >
-                  <div className="flex items-start w-[23px] h-[28px]">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="23"
-                      height="28"
-                      viewBox="0 0 23 28"
-                      fill="none"
-                    >
-                      {button.svgPath}
-                    </svg>
-                  </div>
-                  <span className="text-white text-center font-['DM_Sans'] text-[16px] font-bold leading-[16px] tracking-[1.6px] uppercase">
-                    {button.label}
-                  </span>
-                </button>
+            </p>
+            <div className="sm:flex sm:items-center gap-[16px] max-sm:flex max-sm:flex-col max-sm:self-stretch">
+              {downloadOptions.map((option) => (
+                <DownloadButton key={option.id} option={option} />
               ))}
             </div>
           </div>
         </div>
-        <div className="h-[1px] shrink-0 bg-[rgba(255,255,255,0.30)]"></div>
-        <div className="text-white text-start max-sm:text-center font-['DM_Sans'] text-[16px] font-normal leading-[26px] pt-[31px]">
-          All rights reserved
+
+        <div className="h-px bg-white/30 mb-[31px]"></div>
+
+        <div className="flex justify-between items-center max-sm:flex-col max-sm:gap-4">
+          <p className="text-white text-[16px] font-normal leading-[26px]">
+            © {currentYear} FinanceFlow. {copyrightText}
+          </p>
+          <div className="flex gap-6 max-sm:gap-4">
+            <a
+              href="/terms"
+              className="text-white hover:text-blue-300 transition-colors"
+            >
+              Terms of Service
+            </a>
+            <a
+              href="/privacy"
+              className="text-white hover:text-blue-300 transition-colors"
+            >
+              Privacy Policy
+            </a>
+          </div>
         </div>
       </div>
     </footer>

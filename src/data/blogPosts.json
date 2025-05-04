@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "image": "/Images/card.jpg",
+    "category": "Products",
+    "title": "The Basics about Cryptocurrency",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra donec diammeo.",
+    "author": "Alex Turner",
+    "authorImage": "/Images/img_card.jpg",
+    "date": "August 2, 2021"
+  },
+  {
+    "id": 2,
+    "image": "/Images/card.jpg",
+    "category": "Products",
+    "title": "The Basics about Cryptocurrency",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra donec diammeo.",
+    "author": "Alex Turner",
+    "authorImage": "/Images/img_card.jpg",
+    "date": "August 2, 2021"
+  },
+  {
+    "id": 3,
+    "image": "/Images/card.jpg",
+    "category": "Products",
+    "title": "The Basics about Cryptocurrency",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra donec diammeo.",
+    "author": "Alex Turner",
+    "authorImage": "/Images/img_card.jpg",
+    "date": "August 2, 2021"
+  },
+  {
+    "id": 4,
+    "image": "/Images/card.jpg",
+    "category": "Products",
+    "title": "The Basics about Cryptocurrency",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra donec diammeo.",
+    "author": "Alex Turner",
+    "authorImage": "/Images/img_card.jpg",
+    "date": "August 2, 2021"
+  }
+]
