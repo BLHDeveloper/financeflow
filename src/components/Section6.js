@@ -5,18 +5,8 @@ import Button from "./Button";
 import appDownloadOptions from "../data/appDownloadOptions";
 import ErrorDisplay from "./common/ErrorDisplay"; // Vous devrez créer ce composant
 import LoadingSpinner from "./common/LoadingSpinner"; // Vous devrez créer ce composant
+import SectionTitle from "./SectionTitle"; // Assurez-vous que le chemin est correct
 
-// Composant réutilisable pour les titres de sections
-const SectionTitle = ({ title, description }) => (
-  <div className="flex justify-between items-center max-sm:flex-col max-sm:gap-[16px] max-sm:items-start">
-    <h2 className="text-white text-[42px] font-bold leading-[55.02px] max-sm:text-[28px] max-sm:leading-[36px] max-sm:w-[305px]">
-      {title}
-    </h2>
-    <p className="text-white text-[18px] font-normal leading-[32.004px] w-[461px] max-sm:text-[16px] max-sm:leading-[26px] max-sm:w-[330px]">
-      {description}
-    </p>
-  </div>
-);
 
 // Composant pour les cartes de blog
 const BlogCard = ({ post }) => (
