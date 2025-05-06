@@ -9,7 +9,6 @@ export default function About() {
       <Section2 />
       <Section3 />
       <Section4 />
-
     </>
   );
 }
