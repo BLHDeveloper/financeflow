@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import Button from "@/components/Button";
+import ErrorDisplay from "@/components/common/ErrorDisplay";
+
 // Composant Input correctement défini
 const Input = ({ title, placeholder, type = "text" }) => (
   <div className="flex flex-col justify-center items-start gap-3 w-[364px] h-[106px] shrink-0">
@@ -130,6 +132,28 @@ const faqs = [
 
 export default function ContactFAQ() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [formError, setFormError] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setFormError(null);
+    
+    try {
+      // Simulation d'envoi de formulaire avec délai
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      
+      // Commentez cette ligne pour tester le succès
+      // throw new Error("Erreur lors de l'envoi du message");
+      
+      alert("Message envoyé avec succès!");
+    } catch (error) {
+      setFormError(error.message || "Une erreur est survenue lors de l'envoi du message");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -138,31 +162,46 @@ export default function ContactFAQ() {
           Get in touch
         </h1>
         <div className="flex sm:justify-between max-sm:flex-col max-sm:gap-[45px] mt-[52px] max-sm:mt-[40px]">
-          <form className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <Input title="Name" placeholder="Full Name" />
-              <Input
-                title="Email"
-                placeholder="email@example.com"
-                type="email"
+          {formError ? (
+            <div className="w-full md:max-w-xl">
+              <ErrorDisplay 
+                message={formError} 
+                onRetry={() => setFormError(null)}
               />
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Input title="Company" placeholder="Company Name" />
-              <Input title="Subject" placeholder="How can we help?" />
-            </div>
-            <div className="flex flex-col gap-3">
-              <p className="text-white text-[18px] font-bold leading-[25.992px] tracking-[0.9px] uppercase">
-                Message
-              </p>
-              <textarea
-                placeholder="Your Message"
-                rows={5}
-                className="w-full px-6 py-5 bg-[#010D50] border border-[#010725] hover:border-white rounded-xl text-white text-[18px] font-normal leading-[27px] focus:outline-none"
+          ) : (
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Input title="Name" placeholder="Full Name" />
+                <Input
+                  title="Email"
+                  placeholder="email@example.com"
+                  type="email"
+                />
+              </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Input title="Company" placeholder="Company Name" />
+                <Input title="Subject" placeholder="How can we help?" />
+              </div>
+              <div className="flex flex-col gap-3">
+                <p className="text-white text-[18px] font-bold leading-[25.992px] tracking-[0.9px] uppercase">
+                  Message
+                </p>
+                <textarea
+                  placeholder="Your Message"
+                  rows={5}
+                  className="w-full px-6 py-5 bg-[#010D50] border border-[#010725] hover:border-white rounded-xl text-white text-[18px] font-normal leading-[27px] focus:outline-none"
+                  required
+                />
+              </div>
+              <Button 
+                label={isSubmitting ? "ENVOI EN COURS..." : "SEND MESSAGE"} 
+                className="max-sm:w-full"
+                disabled={isSubmitting}
+                type="submit"
               />
-            </div>
-            <Button label="SEND MESSAGE" className="max-sm:w-full" />
-          </form>
+            </form>
+          )}
           <div className="inline-flex flex-col items-start gap-8 max-sm:gap-6">
             <div className="flex flex-col justify-center items-start pr-[5px] gap-3 max-sm:pb-[10px] max-sm:gap-5 max-sm:self-stretch.">
               <p className="text-white text-[22px] font-bold leading-[30.998px] tracking-[0.22px] max-sm:text-[26px] max-sm:leading-[36px]">

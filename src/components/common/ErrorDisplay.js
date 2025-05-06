@@ -1,9 +1,9 @@
 import React from 'react';
 import Button from '../Button';
 
-const ErrorDisplay = ({ message, onRetry }) => {
+const ErrorDisplay = ({ message, onRetry, title = "Une erreur est survenue", className = "" }) => {
   return (
-    <div className="flex flex-col items-center justify-center p-10 bg-[#010D50] rounded-[20px] text-center">
+    <div className={`flex flex-col items-center justify-center p-10 bg-[#010D50] rounded-[20px] text-center ${className}`}>
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
         width="64" 
@@ -20,7 +20,7 @@ const ErrorDisplay = ({ message, onRetry }) => {
         <line x1="12" y1="8" x2="12" y2="12" />
         <line x1="12" y1="16" x2="12.01" y2="16" />
       </svg>
-      <h3 className="text-xl font-bold mb-2 text-white">Une erreur est survenue</h3>
+      <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
       <p className="text-white mb-6">{message}</p>
       {onRetry && (
         <Button 
