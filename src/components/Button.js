@@ -36,6 +36,7 @@ const Button = ({
     primary: "bg-[#0328EE] hover:bg-[#0220c9] text-white",
     secondary: "bg-white/10 hover:bg-[#0328EE] text-white",
     outline: "bg-white hover:bg-[#031FB4] hover:text-white text-[#0328EE]",
+    autour: "bg-[#031FB4] hover:bg-[#0220c9] text-white",
   };
 
   // Combine classes

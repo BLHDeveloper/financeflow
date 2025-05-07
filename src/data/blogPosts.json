@@ -12,7 +12,7 @@
   {
     "id": 2,
     "image": "/Images/card.jpg",
-    "category": "Products",
+    "category": "Apps",
     "title": "The Basics about Cryptocurrency",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra donec diammeo.",
     "author": "Alex Turner",
@@ -22,7 +22,7 @@
   {
     "id": 3,
     "image": "/Images/card.jpg",
-    "category": "Products",
+    "category": "Tutorial",
     "title": "The Basics about Cryptocurrency",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra donec diammeo.",
     "author": "Alex Turner",
@@ -31,6 +31,56 @@
   },
   {
     "id": 4,
+    "image": "/Images/card.jpg",
+    "category": "Products",
+    "title": "The Basics about Cryptocurrency",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra donec diammeo.",
+    "author": "Alex Turner",
+    "authorImage": "/Images/img_card.jpg",
+    "date": "August 2, 2021"
+  },
+  {
+    "id": 5,
+    "image": "/Images/card.jpg",
+    "category": "Products",
+    "title": "The Basics about Cryptocurrency",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra donec diammeo.",
+    "author": "Alex Turner",
+    "authorImage": "/Images/img_card.jpg",
+    "date": "August 2, 2021"
+  },
+  {
+    "id": 6,
+    "image": "/Images/card.jpg",
+    "category": "Tutorial",
+    "title": "The Basics about Cryptocurrency",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra donec diammeo.",
+    "author": "Alex Turner",
+    "authorImage": "/Images/img_card.jpg",
+    "date": "August 2, 2021"
+  },
+  {
+    "id": 7,
+    "image": "/Images/card.jpg",
+    "category": "Apps",
+    "title": "The Basics about Cryptocurrency",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra donec diammeo.",
+    "author": "Alex Turner",
+    "authorImage": "/Images/img_card.jpg",
+    "date": "August 2, 2021"
+  },
+  {
+    "id": 8,
+    "image": "/Images/card.jpg",
+    "category": "Products",
+    "title": "The Basics about Cryptocurrency",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque viverra donec diammeo.",
+    "author": "Alex Turner",
+    "authorImage": "/Images/img_card.jpg",
+    "date": "August 2, 2021"
+  },
+  {
+    "id": 9,
     "image": "/Images/card.jpg",
     "category": "Products",
     "title": "The Basics about Cryptocurrency",
