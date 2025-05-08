@@ -1,8 +1,11 @@
 import React from "react";
 import Image from "next/image";
 
-const BlogCard = ({ post }) => (
-  <div className="bg-[#010D50] rounded-[40px] overflow-hidden shadow-lg">
+const BlogCard = ({ post, onClick }) => (
+  <div 
+    className="bg-[#010D50] rounded-[40px] overflow-hidden shadow-lg cursor-pointer transition-transform hover:scale-[1.02]" 
+    onClick={() => onClick && onClick(post)}
+  >
     <Image
       src={post.image}
       alt="Article thumbnail"
@@ -23,7 +26,7 @@ const BlogCard = ({ post }) => (
         {post.content}
       </p>
       <div className="w-[336px] h-px flex-shrink-0 bg-white/10 mb-[23px]"></div>
-      <div className="flex items-center gap-[15px] w-[486px]] mb-[34px]">
+      <div className="flex items-center gap-[15px] w-[486px] mb-[34px]">
         <Image
           src={post.authorImage || "/Images/img_card.jpg"}
           alt={`Author ${post.author}`}
