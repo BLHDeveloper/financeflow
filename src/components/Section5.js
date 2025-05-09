@@ -52,7 +52,7 @@ const TestimonialCard = ({ testimonial, isActive }) => (
     </p>
     <div className="flex items-center gap-[22px] w-[486px]">
       <Image
-        src={testimonial.image}
+        src="/Images/user1.jpg"
         alt={testimonial.user}
         width={58}
         height={58}
