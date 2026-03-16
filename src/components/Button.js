@@ -29,7 +29,7 @@ const Button = ({
 }) => {
   // Base button styles
   const baseStyles =
-    "inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider rounded-[80px] transition-all duration-200 cursor-pointer px-[32px] py-[27px] text-center text-[16px] leading-[16px] tracking-[1.6px]";
+    "inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider rounded-[80px] transition-all duration-300 cursor-pointer px-6 sm:px-[32px] py-4 sm:py-[22px] text-center text-[14px] sm:text-[16px] leading-[16px] tracking-[1.6px] hover:shadow-lg hover:shadow-blue-500/20";
 
   // Variants
   const variants = {

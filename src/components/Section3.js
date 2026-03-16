@@ -2,37 +2,42 @@ import React from "react";
 import Image from "next/image";
 import FeatureIcon from "./icons/FeatureIcon";
 
-// Composant réutilisable pour les caractéristiques
-const FeatureItem = ({ icon, label, className = "p-[7px]", size = "w-[32px] h-[32px]" }) => (
-  <div className="flex items-center gap-[17px]">
-    <div className={`flex ${className} justify-center items-center rounded-[13px] bg-[#0328EE]`}>
+const FeatureItem = ({
+  icon,
+  label,
+  className = "p-[7px]",
+  size = "w-[32px] h-[32px]",
+}) => (
+  <div className="flex items-center gap-4">
+    <div
+      className={`flex ${className} justify-center items-center rounded-[13px] bg-[#0328EE]`}
+    >
       <div className="flex items-start">
         <div className={size}>
           <FeatureIcon icon={icon} />
         </div>
       </div>
     </div>
-    <p className="text-white  text-lg font-normal leading-[32.004px]">
+    <p className="text-white text-base sm:text-lg font-normal leading-8">
       {label}
     </p>
   </div>
 );
 
-// Composant de section réutilisable
 const SectionContent = ({ data, isReversed = false }) => {
   const { title, description, image, imageProps, features } = data;
-  
+
   const contentSection = (
-    <div className="flex flex-col gap-[19px] max-sm:gap-[16px]">
-      <h2 className="text-white  text-[42px] max-sm:text-[28px] font-bold leading-[55.02px] max-sm:leading-[36px] w-[475px] max-sm:w-[305px]">
+    <div className="flex flex-col gap-4 sm:gap-5">
+      <h2 className="text-white text-2xl sm:text-3xl lg:text-[42px] font-bold leading-tight lg:leading-[55px] max-w-lg">
         {title}
       </h2>
-      <p className="text-white  text-[18px] max-sm:text-[16px] font-normal leading-[32.004px] max-sm:leading-[26px] w-[470px] max-sm:w-[330px]">
+      <p className="text-white/80 text-base sm:text-lg font-normal leading-7 sm:leading-8 max-w-md">
         {description}
       </p>
-      <div className="flex flex-col gap-[17px] sm:mt-[13px]">
+      <div className="flex flex-col gap-4 sm:mt-3">
         {features.map((feature, idx) => (
-          <FeatureItem 
+          <FeatureItem
             key={idx}
             icon={feature.iconName || `icon-${idx + 1}`}
             label={feature.label}
@@ -43,16 +48,20 @@ const SectionContent = ({ data, isReversed = false }) => {
       </div>
     </div>
   );
+
   const imageSection = (
-    <Image
-      src={image}
-      alt={title}
-      {...imageProps}
-    />
+    <div className="flex justify-center">
+      <Image
+        src={image}
+        alt={title}
+        {...imageProps}
+        className={`w-full max-w-lg h-auto ${imageProps?.className || ""}`}
+      />
+    </div>
   );
 
   return (
-    <div className={`flex max-sm:flex-col sm:justify-between sm:items-center ${isReversed ? 'sm:pl-[133px]' : 'sm:px-[133px]'} pt-[${isReversed ? '127' : '114'}px] max-sm:pt-[80px] max-sm:px-[16px] max-sm:gap-[40px] ${isReversed ? 'pb-[101px] max-sm:pb-[80px]' : ''} relative`}>
+    <div className="container-main grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center py-16 sm:py-24 relative">
       {isReversed ? (
         <>
           {contentSection}
@@ -68,7 +77,6 @@ const SectionContent = ({ data, isReversed = false }) => {
   );
 };
 
-// Définition des données dynamiques pour chaque section avec des noms d'icônes au lieu de SVG intégrés
 const sections = [
   {
     title: "Earn daily rewards on your idle tokens",
@@ -78,8 +86,7 @@ const sections = [
     imageProps: {
       width: 501,
       height: 592,
-      className:
-        "max-sm:w-[324px] max-sm:h-[383px] max-sm:justify-center max-sm:items-center max-sm:mx-auto",
+      className: "max-sm:mx-auto",
     },
     features: [
       {
@@ -107,9 +114,10 @@ const sections = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat nulla suspendisse tortor aene.",
     image: "/Images/Computers.svg",
-    imageProps: { width: 971, height: 585 ,
-       className:
-        "sm:ml-[60px]",
+    imageProps: {
+      width: 971,
+      height: 585,
+      className: "",
     },
     features: [
       {
@@ -137,7 +145,10 @@ const sections = [
 const Section3 = () => {
   return (
     <div className="flex flex-col justify-center relative overflow-hidden">
-      <div className="absolute self-center w-[680px] h-[680px] flex-shrink-0 filter blur-[150px] fill-[#010D50]">
+      <div
+        className="absolute self-center w-[680px] h-[680px] filter blur-[150px] pointer-events-none"
+        aria-hidden="true"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="682"
@@ -152,10 +163,7 @@ const Section3 = () => {
         </svg>
       </div>
 
-      {/* Section 1 */}
       <SectionContent data={sections[0]} />
-
-      {/* Section 2 */}
       <SectionContent data={sections[1]} isReversed={true} />
     </div>
   );

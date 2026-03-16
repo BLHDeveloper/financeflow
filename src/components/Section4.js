@@ -9,38 +9,36 @@ const Section4 = ({
   image = "/Images/div.svg",
   buttonLabel = "Download App",
   buttonVariant = "outline",
-  backgroundColor = "#0328EE",
 }) => {
-  // Styles constants pour améliorer la lisibilité
-  const sectionStyles = {
-    container: `flex max-sm:flex-col sm:justify-between items-center h-[513px] 
-      max-sm:h-[609px] flex-shrink-0 sm:px-[133px] sm:mt-[116px] sm:mb-[200px] 
-      max-sm:mb-[120px] max-sm:pt-[40px]`,
-    content: `sm:w-[589px] sm:h-[293px] sm:flex-shrink-0 max-sm:inline-flex 
-      max-sm:flex-col max-sm:gap-4 max-sm:text-center`,
-    heading: ` text-[42px] max-sm:text-[28px] font-bold 
-      leading-[55.02px] max-sm:leading-[36px] text-[#FFF] sm:mb-4 max-sm:w-[330px]`,
-    paragraph: ` text-[18px] max-sm:text-[16px] font-normal 
-      leading-[32.004px] max-sm:leading-[26px] text-[#FFF] w-[496px] max-sm:w-[330px] sm:mb-8`,
-    image: `sm:mb-[110px] max-sm:w-[297.682px] max-sm:h-[319.774px]`,
-  };
-
   return (
-    <div className={sectionStyles.container} style={{ backgroundColor }}>
-      <div className={sectionStyles.content}>
-        <h2 className={sectionStyles.heading}>{title}</h2>
-        <p className={sectionStyles.paragraph}>{description}</p>
-        <Button label={buttonLabel} variant={buttonVariant} />
+    <section className="bg-[#0328EE] my-16 sm:my-24 lg:my-32">
+      <div className="container-main grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12 py-12 sm:py-16 lg:py-20">
+        {/* Content */}
+        <div className="flex flex-col gap-4 max-sm:items-center max-sm:text-center">
+          <h2 className="text-white text-2xl sm:text-3xl lg:text-[42px] font-bold leading-tight lg:leading-[55px] max-w-xl">
+            {title}
+          </h2>
+          <p className="text-white/90 text-base sm:text-lg font-normal leading-7 sm:leading-8 max-w-lg">
+            {description}
+          </p>
+          <div className="pt-4">
+            <Button label={buttonLabel} variant={buttonVariant} />
+          </div>
+        </div>
+
+        {/* Image */}
+        <div className="flex justify-center lg:justify-end">
+          <Image
+            src={image}
+            alt="FinanceFlow app illustration"
+            width={1512}
+            height={500}
+            className="w-full max-w-lg h-auto object-contain"
+            priority
+          />
+        </div>
       </div>
-      <Image
-        src={image}
-        alt="FinanceFlow app illustration"
-        width={1512}
-        height={500}
-        className={sectionStyles.image}
-        priority
-      />
-    </div>
+    </section>
   );
 };
 
@@ -50,7 +48,6 @@ Section4.propTypes = {
   image: PropTypes.string,
   buttonLabel: PropTypes.string,
   buttonVariant: PropTypes.string,
-  backgroundColor: PropTypes.string,
 };
 
 export default Section4;

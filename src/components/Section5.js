@@ -4,11 +4,9 @@ import Image from "next/image";
 import Button from "./Button";
 import IconSelector from "./icons/IconSelector";
 
-// Importation directe des données JSON
 import testimonials from "../data/testimonials.json";
 import sections from "../data/sections.json";
 
-// Hooks personnalisés pour la gestion du défilement
 const useScrollTracking = (scrollRef) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -37,20 +35,19 @@ const useScrollTracking = (scrollRef) => {
   return activeIndex;
 };
 
-// Composant réutilisable pour les témoignages
 const TestimonialCard = ({ testimonial, isActive }) => (
   <div
-    className={`flex flex-col items-start gap-[25px] p-[65px_50px_66px_50px] rounded-[40px] bg-[#010D50] max-sm:w-[343px]`}
+    className={`flex flex-col items-start gap-6 p-8 sm:p-12 rounded-[32px] bg-[#010D50] min-w-[300px] sm:min-w-[500px] flex-shrink-0 transition-opacity duration-500`}
     style={{ opacity: isActive ? 1 : 0.3 }}
   >
     <p
-      className={`text-[18px] font-normal leading-[32.004px] sm:w-[468px] max-sm:w-full max-sm:self-stretch ${
+      className={`text-base sm:text-lg font-normal leading-7 sm:leading-8 ${
         isActive ? "text-white" : "text-white/30"
       }`}
     >
       {testimonial.text}
     </p>
-    <div className="flex items-center gap-[22px] w-[486px]">
+    <div className="flex items-center gap-5">
       <Image
         src="/Images/user1.jpg"
         alt={testimonial.user}
@@ -58,18 +55,18 @@ const TestimonialCard = ({ testimonial, isActive }) => (
         height={58}
         className="rounded-full"
       />
-      <div className="flex flex-col justify-center items-start gap-[6px] pr-[2px]">
+      <div className="flex flex-col justify-center items-start gap-1.5">
         <p
           className={`${
             isActive ? "text-white" : "text-white/30"
-          } text-[16px] font-bold leading-[18px] tracking-[0.8px] uppercase`}
+          } text-base font-bold leading-[18px] tracking-[0.8px] uppercase`}
         >
           {testimonial.user}
         </p>
         <p
           className={`${
-            isActive ? "text-white" : "text-[rgba(241,241,249,0.30)]"
-          } text-[16px] font-normal leading-[18px] tracking-[0.8px] uppercase`}
+            isActive ? "text-white/70" : "text-white/20"
+          } text-sm font-normal leading-[18px] tracking-[0.8px] uppercase`}
         >
           {testimonial.role}
         </p>
@@ -78,47 +75,36 @@ const TestimonialCard = ({ testimonial, isActive }) => (
   </div>
 );
 
-// Indicateurs de pagination pour les témoignages
 const PaginationIndicators = ({ count, activeIndex }) => (
-  <div className="pt-[40px] flex justify-center items-center">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={count * 28}
-      height="14"
-      viewBox={`0 0 ${count * 28} 14`}
-      fill="none"
-    >
-      {Array.from({ length: count }, (_, i) => (
-        <rect
-          key={i}
-          x={i * 28}
-          width="14"
-          height="14"
-          rx="7"
-          fill="white"
-          fillOpacity={activeIndex === i ? "1" : "0.4"}
-        />
-      ))}
-    </svg>
+  <div className="pt-8 flex justify-center items-center gap-3">
+    {Array.from({ length: count }, (_, i) => (
+      <div
+        key={i}
+        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+          activeIndex === i
+            ? "bg-white scale-110"
+            : "bg-white/30"
+        }`}
+      />
+    ))}
   </div>
 );
 
-// Section des témoignages
 const TestimonialsSection = ({ testimonials }) => {
   const scrollRef = useRef(null);
   const activeIndex = useScrollTracking(scrollRef);
 
   return (
-    <div className="flex flex-col gap-[40px]">
-      <div className="flex sm:justify-between sm:items-center sm:px-[133px] max-sm:px-4 max-sm:flex-col max-sm:gap-[22px] max-sm:w-[358px]">
-        <h2 className="text-white text-[42px] max-sm:text-[28px] font-bold leading-[55.02px] max-sm:leading-[36px]">
+    <div className="flex flex-col gap-10">
+      <div className="container-main flex sm:justify-between sm:items-center max-sm:flex-col max-sm:gap-5">
+        <h2 className="text-white text-2xl sm:text-3xl lg:text-[42px] font-bold leading-tight lg:leading-[55px]">
           What our users say?
         </h2>
         <Button label="Download App" />
       </div>
       <div className="flex flex-col">
         <div
-          className="flex items-start gap-[26px] max-sm:gap-[8px] overflow-x-scroll scrollbar-hide px-[133px] max-sm:px-4"
+          className="flex items-start gap-6 overflow-x-auto scrollbar-hide snap-carousel pl-[var(--container-px)] pr-4"
           ref={scrollRef}
         >
           {testimonials.map((testimonial, idx) => (
@@ -138,9 +124,8 @@ const TestimonialsSection = ({ testimonials }) => {
   );
 };
 
-// Composant pour les fonctionnalités/étapes
 const FeatureItem = ({ feature }) => (
-  <div className="flex items-center gap-[17px]">
+  <div className="flex items-center gap-4">
     <div
       className={`flex ${feature.className} justify-center items-center rounded-[13px] bg-[#0328EE]`}
     >
@@ -150,41 +135,38 @@ const FeatureItem = ({ feature }) => (
         </div>
       </div>
     </div>
-    <p className="text-white  text-lg font-normal leading-[32.004px]">
+    <p className="text-white text-base sm:text-lg font-normal leading-8">
       {feature.label}
     </p>
   </div>
 );
 
-// Section Get Started
 const GetStartedSection = ({ section }) => (
-  <div className="flex sm:justify-between max-sm:flex-col sm:items-center px-[133px] pt-[159px] pb-[170px] max-sm:pt-[120px] max-sm:px-[16px] max-sm:pb-[80px]">
+  <div className="container-main grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center py-20 sm:py-28">
     {/* Content */}
-    <div className="sm:w-[475px] sm:h-[356px] flex-shrink-0 max-sm:inline-flex max-sm:flex-col max-sm:items-start max-sm:gap-[16px] max-sm:w-[330px]">
-      <h2 className="text-white text-[42px] max-sm:text-[28px] font-bold leading-[55.02px] max-sm:leading-[32px] sm:w-[475px] sm:mb-[24px]">
+    <div className="flex flex-col gap-4">
+      <h2 className="text-white text-2xl sm:text-3xl lg:text-[42px] font-bold leading-tight lg:leading-[55px] max-w-lg">
         {section.title}
       </h2>
-      <p className="text-white text-[18px] max-sm:text-[16px] font-normal leading-[32.004px] max-sm:leading-[26px] sm:w-[470px]">
+      <p className="text-white/80 text-base sm:text-lg font-normal leading-7 sm:leading-8 max-w-md">
         {section.description}
       </p>
-      <div className="flex flex-col gap-[17px] sm:mt-[40px]">
+      <div className="flex flex-col gap-4 sm:mt-6">
         {section.features.map((feature, idx) => (
           <FeatureItem key={idx} feature={feature} />
         ))}
       </div>
     </div>
     {/* Video Preview */}
-    <div className="flex justify-center items-center w-[662px] h-[400px] max-sm:w-[358px] flex-shrink-0 rounded-[40px] bg-[#010D50] max-sm:mt-[40px]">
-      <div className="w-[100px] h-[100px] flex-shrink-0 fill-white/20">
+    <div className="flex justify-center items-center w-full max-w-2xl h-[300px] sm:h-[400px] rounded-[32px] bg-[#010D50]">
+      <div className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] fill-white/20">
         <IconSelector type="play" />
       </div>
     </div>
   </div>
 );
 
-// Composant principal
 const Section5 = () => {
-  // Utilisation directe des données JSON importées
   return (
     <>
       <TestimonialsSection testimonials={testimonials} />

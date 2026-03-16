@@ -1,14 +1,14 @@
 import React from "react";
 
-const SectionTitle = ({ title, description, className = ""}) => {
+const SectionTitle = ({ title, description, className = "" }) => {
   return (
     <div
       className={`${className} flex-col justify-center items-center text-center max-sm:text-start`}
     >
-      <h2 className="text-white  font-bold relative text-[66px] max-sm:text-[38px] leading-[80px] max-sm:leading-[46px] mb-[21px] max-sm:mb-[16px] max-sm:w-[358px] tracking-[-1px]">
+      <h2 className="text-white font-bold relative text-4xl sm:text-5xl lg:text-[66px] leading-tight lg:leading-[80px] mb-4 sm:mb-5 max-w-3xl mx-auto max-sm:mx-0 tracking-[-1px]">
         {title}
       </h2>
-      <p className=" text-white font-normal text-[18px] max-sm:text-[16px] leading-[32.004px] max-sm:leading-[26px] max-sm:w-[320px] w-[606px] inline-block relative">
+      <p className="text-white/80 font-normal text-base sm:text-lg leading-7 sm:leading-8 max-w-xl mx-auto max-sm:mx-0 inline-block relative">
         {description}
       </p>
     </div>

@@ -1,18 +1,16 @@
-import React from 'react';
+import React from "react";
 
 const SectionTitle = ({ title, description }) => {
   return (
-    <div className="flex justify-between items-center max-sm:flex-col max-sm:gap-[16px] max-sm:items-start relative">
-      <h2 className="text-white text-[42px] font-bold leading-[55.02px] max-sm:text-[28px] max-sm:leading-[36px] max-sm:w-[305px]">
+    <div className="flex justify-between items-center max-sm:flex-col max-sm:gap-4 max-sm:items-start relative">
+      <h2 className="text-white text-2xl sm:text-3xl lg:text-[42px] font-bold leading-tight lg:leading-[55px] max-w-lg">
         {title}
       </h2>
-      <p className="text-white text-[18px] font-normal leading-[32.004px] w-[461px] max-sm:text-[16px] max-sm:leading-[26px] max-sm:w-[330px]">
+      <p className="text-white/70 text-base sm:text-lg font-normal leading-7 sm:leading-8 max-w-md">
         {description}
       </p>
     </div>
   );
 };
-
-
 
 export default SectionTitle;
